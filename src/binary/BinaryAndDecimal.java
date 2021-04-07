@@ -25,19 +25,16 @@ public class BinaryAndDecimal {
         }
         //传入的是正数
         //用一个stack代替递归/保持递归顺序。
-        Stack<Integer> stack = new Stack();
-        while (true) {
+        Stack<Integer> stack = new Stack<>();
+        while (decimal >= 1) {
             //终止条件 decimal 与二的商小于1
-            if (decimal < 1) {
-                break;
-            }
             stack.push(decimal);
             decimal /= 2;
         }
-        System.out.printf("使用栈： ");
+        System.out.print("使用栈： ");
         while (!stack.isEmpty()) {
             int r = stack.pop();
-            System.out.printf(String.valueOf(r % 2));
+            System.out.print(r % 2);
         }
         System.out.println();
     }
@@ -57,13 +54,13 @@ public class BinaryAndDecimal {
         }
         //递结束条件
         if(decimal < 1){
-            System.out.printf("使用递归：");
+            System.out.print("使用递归：");
             return ;
         }
         //递操作
         decimalToBinaryWithRecursion(decimal/2,++floor);
         //归操作
-        System.out.printf(String.valueOf(decimal%2));
+        System.out.print(decimal%2);
         if(1 == floor){
             System.out.println();
         }
@@ -71,8 +68,8 @@ public class BinaryAndDecimal {
 
     /**
      * 使用位运算来进行十进制转二进制
-     * @param decimal
-     * @param floor
+     * @param decimal 十进制
+     * @param floor 层数
      */
     public static void decimalToBinaryWithBitArithmetic(int decimal,int floor) {
         //定义个参数来知道递归到第几层了
@@ -84,13 +81,13 @@ public class BinaryAndDecimal {
         }
         //结束条件
         if (decimal == 0) {
-            System.out.printf("使用位运算递归：");
+            System.out.print("使用位运算递归：");
             return;
         }
         //递
         decimalToBinaryWithBitArithmetic(decimal >> 1, ++floor);
         //归
-        System.out.printf(String.valueOf(decimal & 1));
+        System.out.print(decimal & 1);
         if (1 == floor) {
             System.out.println();
         }
