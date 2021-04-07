@@ -15,17 +15,25 @@ public class BinaryAndDecimal {
     }
 
     public enum binaryType{
+        /**
+         *
+         */
         BINARY("二进制",2),
         OCTAL("八进制",8),
         DECIMAL("十进制",10),
         HEXADECIMAL("十六进制",16);
         binaryType(String name, int i) {
         }
+
+
     }
     public enum binaryUnit{
+        /**
+         *
+         */
         OCTAL("八进制",3),
         HEXADECIMAL("十六进制",4);
-        private String name;
+        private final String name;
         private int value;
         binaryUnit(String name, int i) {
         this.name = name;
@@ -33,9 +41,6 @@ public class BinaryAndDecimal {
         }
         private int getValue(){
             return this.value;
-        }
-        private String getName(){
-            return this.name;
         }
     }
 
@@ -61,7 +66,7 @@ public class BinaryAndDecimal {
     /**
      * 二进制转八进制
      * @param binary
-     * @return
+     * @return 八进制字符串
      */
     public static String binaryToOctal(String binary){
         StringBuilder result = new StringBuilder("0");
@@ -111,7 +116,7 @@ public class BinaryAndDecimal {
     /**
      * 二进制转十六进制
      * @param binary
-     * @return
+     * @return 十六进制字符串
      */
     public static String binaryToHexadecimal(String binary){
         return null;
