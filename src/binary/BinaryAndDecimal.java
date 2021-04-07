@@ -75,11 +75,10 @@ public class BinaryAndDecimal {
     public static String binaryToBinaryOfIntegerPower(String binary,binaryType type,StringBuilder buffer){
         StringBuilder binaryBuffer = new StringBuilder(binary);
         int power = binaryUnit.valueOf(type.name).getValue();
-        //每次方个二进制位为一个进制单位，有几个八进制单位
+        //每次方个二进制位为一个进制单位，有几个进制单位 如8进制的每3个bit为一个单位
         int count = binary.length()/power;
-        //如果位数不足则补齐
+        //通过余数来判断是否需要补齐位数； 7%2 = 1 则表示2个单位还多一个。需要补齐 3-1=2个
         int remainder = binary.length()%power;
-
         //需要补齐的位数
         int lackLength = 0;
         //如果存在余数
@@ -96,9 +95,12 @@ public class BinaryAndDecimal {
             }
         }
         for (int i = 0; i < count; i++) {
+            //分割为多个进制单位的字符串
             String decimalResult = BinaryAndDecimal.binaryToDecimal(binaryBuffer.substring(i*power,(i+1)*power));
-                int templateIndex = Integer.parseInt(decimalResult);
-                buffer.append(templates[templateIndex]);
+            //返回的每个数字作为进制的下标
+            int templateIndex = Integer.parseInt(decimalResult);
+            //添加对应的字符串
+            buffer.append(templates[templateIndex]);
         }
         return buffer.toString();
     }
