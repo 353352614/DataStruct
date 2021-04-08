@@ -6,18 +6,18 @@ import java.util.Stack;
 
 /**
  * 进行以下总结：
- * 进制互相转化几个核心的功能：
- * 1.其他进制转换为十进制
- * 2.十进制转换为其他进制
- * 任何进制都可以通过十进制做中间进制的转换
+ *      进制互相转化几个核心的功能：
+ *      1.其他进制转换为十进制
+ *      2.十进制转换为其他进制
+ *      任何进制都可以通过十进制做中间进制的转换
  * 其中有几个注意的点：
- * 1.二进制向2ⁿ的转换 可以用N个bit位为一组依次进行十进制转换，转换的结果拼接为对应进制结果
- * 2.2ⁿ进制向二进制转换可以将每一位拆分为N个bit位进行结果拼接
- * 3.十进制转换为其他进制时可以用递归，迭代法（For）（可以利用栈来保证顺序为递归顺序）的方法计算。其中可以用位运算替代求商和取余
- * 4.判断一个数是否为2ⁿ的方法为:存在一个整数N，有(N&(N-1))==0
- * 5.对负数取补码的方法为：((-N) ^ Integer.MAX_VALUE) + 1;
- * 6.遍历一个数列L，有当前游标i，与i位置对称的位置为 L.length-i-1. (-1是因为数列下标由0开始的)
- * 7.二进制可以看做数组中存了N个1或者0，数组下标即为对应的次幂
+ *      1.二进制向2ⁿ的转换 可以用N个bit位为一组依次进行十进制转换，转换的结果拼接为对应进制结果
+ *      2.2ⁿ进制向二进制转换可以将每一位拆分为N个bit位进行结果拼接
+ *      3.十进制转换为其他进制时可以用递归，迭代法（For）（可以利用栈来保证顺序为递归顺序）的方法计算。其中可以用位运算替代求商和取余
+ *      4.判断一个数是否为2ⁿ的方法为:存在一个整数N，有(N&(N-1))==0
+ *      5.对负数取补码的方法为：((-N) ^ Integer.MAX_VALUE) + 1;
+ *      6.遍历一个数列L，有当前游标i，与i位置对称的位置为 L.length-i-1. (-1是因为数列下标由0开始的)
+ *      7.二进制可以看做数组中存了N个1或者0，数组下标即为对应的次幂
  *
  * @author dengwenqi
  */
@@ -32,7 +32,7 @@ public class BinaryConvertDecimal {
         System.out.println(BinaryConvertDecimal.binaryToOther("1111", BinaryType.OCTAL, new StringBuffer()));
         System.out.println(BinaryConvertDecimal.binaryToOther("1111", BinaryType.BASE_24, new StringBuffer()));
         System.out.println(BinaryConvertDecimal.otherToDecimal("666", BinaryType.BASE_7, new StringBuffer()));
-        System.out.println(otherToOther("6666", BinaryType.BASE_7, BinaryType.OCTAL, new StringBuffer()));
+        System.out.println(otherToOther("6666", BinaryType.BASE_7, BinaryType.BASE_6, new StringBuffer()));
     }
 
     public enum BinaryType {
