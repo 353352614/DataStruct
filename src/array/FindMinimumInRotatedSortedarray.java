@@ -17,7 +17,36 @@ public class FindMinimumInRotatedSortedarray {
      * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      */
 
-    public int findMin(int[] nums) {
-            return 0;
+    public static int findMin(int[] nums) {
+        int low = 0 ;
+        int high = nums.length-1;
+        while (low<high){
+            int mid = low+((high-low)>>1);
+            if(nums[low]<nums[mid]){
+                if(nums[mid]<=nums[high]){
+                    high = mid;
+                }else{
+                    low = mid;
+                }
+            }else{
+                if(nums.length == 2){
+                    return nums[high];
+                }
+
+                if(nums[mid]<nums[low]){
+                    low = mid;
+                }else {
+                    high = mid;
+                }
+
+
+            }
+        }
+            return nums[low];
+    }
+
+    public static void main(String[] args) {
+        int nums[] = new int[]{1,2};
+        System.out.println(findMin(nums));
     }
 }
